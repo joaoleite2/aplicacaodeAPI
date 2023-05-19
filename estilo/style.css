@@ -81,7 +81,9 @@ body{
     margin:.6rem;
     padding:.6rem;
 }
-#temparatura-min-max-container{
-    display:flex;
+#temperatura-min-max-container{
+    /*display:flex;*/
     align-items:center;
+    justify-content:center;
+    margin-top:.8rem;
 }

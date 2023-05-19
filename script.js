@@ -12,6 +12,8 @@ const weatherIconElement = document.querySelector("#weather-icon");
 const countryElement = document.querySelector("#country");
 const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
+const minElement = document.querySelector("#temperature-min");
+const maxElement = document.querySelector("#temperature-max");
 
 //funções
 const getWeatherData = async(city) =>{
@@ -26,13 +28,14 @@ const showWeatherData = async (city) =>{ //sempre que declarar uma variável com
     const data = await getWeatherData(city);
 
     cityElement.innerText = data.name;
-    tempElement.innerText = parseInt(data.main.temp);//isso entre parenteses quer dizer que o tempelement que antes foi declarado que é igual ao documento em html, agora irá ser substuido pelo caminho que se encontra as informações na api como aí descritos
+    tempElement.innerText = `${parseInt(data.main.temp)}`;//isso entre parenteses quer dizer que o tempelement que antes foi declarado que é igual ao documento em html, agora irá ser substuido pelo caminho que se encontra as informações na api como aí descritos
     descElement.innerText = data.weather[0].description;
     weatherIconElement.setAttribute("src",`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
     countryElement.setAttribute("src", `https://flagsapi.com/${data.sys.country}/flat/64.png` );
     umidityElement.innerText = `${data.main.humidity}%`;
     windElement.innerText = `${data.wind.speed}km/h`;
-
+    minElement.innerText = `min ${parseInt(data.main.temp_min)} ºC`;
+    maxElement.innerText = `max ${parseInt(data.main.temp_max)} ºC`;
 };
 
 //eventos
